@@ -23,4 +23,4 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
             h: 126
             x: 100
             y: 100
-            # target: 'foo' # The balloon element we are tracking
+            taret: "Balloon"
