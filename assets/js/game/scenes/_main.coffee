@@ -9,6 +9,6 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
   C.scene "main", ->
 
     balloon = C.e("Balloon")
-    balloon.attr x: _center(balloon), y: _bottom(balloon)
+    balloon.attr x: _center(balloon), y: (C.viewport.height / 2 - balloon.h / 2)
 
     C.e("Cloud")
