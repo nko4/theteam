@@ -1,3 +1,4 @@
+#= require "crafty-custom-follow"
 #= require "_init"
 #= require "../vendor/chroma"
 #= require "models/_player"

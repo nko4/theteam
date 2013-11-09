@@ -5,8 +5,7 @@ require ['crafty'], (C) ->
       @requires 'Actor, Collision'
       @attr w: 183, h: 126
 
-      @bind "EnterFrame", (e) ->
-        # console.log "Cloud EnterFrame", e.frame, @x, @y
-
-      @onHit "Balloon", (e) ->
-        # console.log "Cloud onHit Balloon"
+      @onHit "Balloon", (t) ->
+        t[0].obj.trigger 'hitCloud',
+          normal:  t[0].normal
+          overlap: t[0].overlap

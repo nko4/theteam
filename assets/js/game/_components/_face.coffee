@@ -8,12 +8,14 @@ require ['crafty'], (C) ->
       @bind 'EnterFrame', =>
         @unbind 'EnterFrame'
 
-        @parent.bind 'exhaleComplete', =>
+        @parent.bind 'exhale', =>
           @sprite(1, 0)
 
         @parent.bind 'inhale', =>
           @sprite(2, 0)
 
-        @parent.bind 'exhale', =>
+        @parent.bind 'hitCloud', =>
           @sprite(3, 0)
-
+          setTimeout =>
+            @sprite(1, 0)
+          , 1000
