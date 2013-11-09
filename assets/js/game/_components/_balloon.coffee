@@ -3,16 +3,16 @@ require ['crafty'], (C) ->
   C.c "Balloon",
     init: ->
       @requires 'Actor, SpriteAnimation, Fly, Float, Breathe, balloon_4'
-      @attr w: 136, h: 190
+      @attr w: 124.1212121212121212, h: 146
+      @sprite 0, 0
+      @currentFrame = 0
       @bind 'inhale', @inhale
       @bind 'exhale', @exhale
       @bind 'AnimationEnd', (o) =>
         @trigger 'exhaleComplete' if o.reelId is "exhale"
       @bind 'FrameChange', @handleSizeChange
 
-      @yVelocityMin =  2
-      @yVelocity    = -3
-      @vVelocityMax = -5
+      @yVelocity = 0
 
       @bind 'EnterFrame', =>
         C.viewport.pan "y", @yVelocity, 1
@@ -20,21 +20,24 @@ require ['crafty'], (C) ->
         @setBackgroundColor()
 
     handleSizeChange: (o) ->
+      @currentFrame = o.frameNumber
       animationCompletion = (o.frameNumber+1) / @_reels[o.reelId].frames.length
-      if o.reelId is 'exhale'
-        @yVelocity = ~~(@yVelocity - @vVelocityMax * animationCompletion)
-      else
-        @yVelocity = ~~(@yVelocity + @vVelocityMax * animationCompletion)
-
-      @yVelocity = @yVelocityMin if @yVelocity > @yVelocityMin
+      if o.reelId is 'inhale'
+        @yVelocity -= 1
+        @yVelocity = -1 if @yVelocity >= 0
+      else if o.reelId is 'exhale'
+        @yVelocity += 2
+        @yVelocity = 2 if @yVelocity > 2
 
     inhale: ->
-      @animate 'inhale', 4, 0, 7
-      @playAnimation 'inhale', 20, 0
+      @resetAnimation()
+      @animate 'inhale', 0, 0, 31
+      @playAnimation 'inhale', 90, 0
 
     exhale: ->
-      @animate 'exhale', 7, 0, 4
-      @playAnimation 'exhale', 40, 0
+      @resetAnimation()
+      @animate 'exhale', @currentFrame, 0, 0
+      @playAnimation 'exhale', 90, 0
 
     setBackgroundColor: ->
       # 399 represents the inital bottom position
