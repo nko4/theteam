@@ -2,6 +2,7 @@
 #= require "scenes/_loading"
 #= require "scenes/_main"
 #= require "components/_actor"
+#= require "components/_spawner"
 #= require "components/_face"
 #= require "components/_balloon"
 #= require "components/_cloud"

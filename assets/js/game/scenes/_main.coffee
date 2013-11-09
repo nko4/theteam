@@ -16,4 +16,4 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
 
     balloon.attach face
 
-    C.e("Cloud")
+    C.e("Spawner")
