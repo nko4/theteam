@@ -2,6 +2,22 @@ class NKO.Views.Hud extends Backbone.View
   template: window.templates.hud_layout
   className: 'hud-layout'
 
+  initialize: ->
+    @on 'heart:remove', 'removeHeart'
+    @on 'heart:add', 'addHeart'
+
+  addHeart: ->
+    $emptyHeart = @$(".heart.empty").last()
+    unless _.isEmpty($emptyHeart)
+      $emptyHeart.removeClass('empty').addClass('full')
+
+  removeHeart: ->
+    $fullHeart = @$(".heart.full").first()
+    if _.isEmpty($fullHeart)
+      NKO.balloon.trigger("hearts:empty")
+    else
+      $fullHeart.removeClass('full').addClass('empty')
+
   startTimer: ->
     start = new Date
     setInterval =>

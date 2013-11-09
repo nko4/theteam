@@ -40,5 +40,11 @@ global-reset()
     .heart
       size 44 40
       display table-cell
-      background url(/img/heart-full.png) no-repeat
-      background-size cover
+
+      &.full
+        background url(/img/heart-full.png) no-repeat
+        background-size cover
+
+      &.empty
+        background url(/img/heart-empty.png) no-repeat
+        background-size cover

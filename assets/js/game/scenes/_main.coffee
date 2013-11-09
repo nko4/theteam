@@ -19,6 +19,8 @@ require ['crafty'], (C) ->
 
     balloon.attach face
 
+    NKO.balloon = balloon
+
     # Show Hud
-    hud = new NKO.Views.Hud
-    $("#hud").html hud.render().el
+    NKO.hud = new NKO.Views.Hud
+    $("#hud").html NKO.hud.render().el
