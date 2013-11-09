@@ -6,6 +6,7 @@
   "nodejs": false,
   "window": {
     "title": "zoom-the-balloon",
+    "icon": "./icon.png",
     "toolbar": false,
     "frame": false,
     "width": 800,
