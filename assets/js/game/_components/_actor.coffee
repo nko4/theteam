@@ -1,4 +1,4 @@
-require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
+require ['crafty'], (C) ->
 
   C.c "Actor",
     init: ->

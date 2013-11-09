@@ -1,4 +1,4 @@
-require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
+require ['crafty'], (C) ->
 
   _center = (component) ->
     C.viewport.width / 2 - component.w / 2

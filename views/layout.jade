@@ -7,12 +7,18 @@ html
     meta(name='author', content= "author of the site")
 
     title= title
-    
+
     link(rel='stylesheet', href='css/master.css')
+    script(type='text/javascript').
+      window.NKO = window.NKO || { Models: {}, Views: {} };
   body
     != content
 
     //- add other scripts through require.js, not here
+    script(src="js/vendor/jquery.min.js")
+    script(src="js/vendor/lodash.min.js")
+    script(src="js/vendor/backbone.min.js")
+    script(src="js/templates.js")
     script(data-main="js/main", src="js/require.js")
 
     //- this must be included for live reload to work in developement

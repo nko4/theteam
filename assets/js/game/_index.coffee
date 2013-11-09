@@ -1,5 +1,6 @@
 #= require "_init"
 #= require "../vendor/chroma"
+#= require "models/_player"
 #= require "scenes/_loading"
 #= require "scenes/_main"
 #= require "_components/_actor"
@@ -11,6 +12,5 @@
 #= require "_components/_balloon"
 #= require "_components/_cloud"
 
-require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
-
+require ['crafty'], (C) ->
   C.scene "loading"
