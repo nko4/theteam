@@ -16,7 +16,7 @@ require ['crafty'], (C) ->
 
       @yVelocity = 0
 
-      C.viewport.follow this, 0, 200
+      C.viewport.followX this, 0, 200
       @bind 'EnterFrame', =>
         @y = @_y + @yVelocity
         @setBackgroundColor()
