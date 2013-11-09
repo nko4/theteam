@@ -1,5 +1,6 @@
 #= require "_init"
 #= require "../vendor/chroma"
+#= require "models/_player"
 #= require "scenes/_loading"
 #= require "scenes/_main"
 #= require "_components/_actor"
@@ -12,5 +13,4 @@
 #= require "_components/_cloud"
 
 require ['crafty'], (C) ->
-
   C.scene "loading"

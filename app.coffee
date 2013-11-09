@@ -19,4 +19,4 @@ locals:
     "<h1 class='title'>Welcome to Roots!</h1>"
 
 # Precompiled template path, see http://roots.cx/docs/#precompile
-# templates: 'views/templates'
+templates: 'assets/js/templates'
