@@ -9,10 +9,12 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
   C.scene "main", ->
     C.generateWorld()
 
+    padding = 10
+
     balloon = C.e("Balloon")
-    balloon.attr x: _center(balloon), y: (C.viewport.height / 2 - balloon.h / 2)
+    balloon.attr x: _center(balloon), y: (C.viewport.height - balloon.h - padding)
 
     face = C.e("Face")
-    face.attr x: _center(balloon), y: (C.viewport.height / 2 - balloon.h / 2 + face.h)
+    face.attr x: _center(balloon), y: (C.viewport.height - balloon.h - padding + face.h)
 
     balloon.attach face
