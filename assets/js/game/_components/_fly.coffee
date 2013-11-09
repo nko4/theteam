@@ -6,6 +6,11 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
     _acceleration: 0.15
     _deceleration: 0.05
 
+    _maxRotation: 15
+    _currentRotation: 0
+    _apex: 0
+    _step: 0
+
     _maxSpeed: 5
     _currentSpeed: 0
     _remainder: 0
@@ -41,26 +46,101 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
     _bounce: ->
       @_currentSpeed = @_currentSpeed * @_reflection
 
+    _rotateTo: (angle) ->
+      @_rotating = true
+      @_fromAngle = @_currentRotation
+      @_toAngle   = angle
+      @_apex = angle
+      @_step = Math.abs(@_apex / 20)
+
     init: ->
       @requires 'Keyboard'
       @bind 'EnterFrame', (e) ->
-        dx = if @_stopped()
+        if @_stopped()
+          if @_moving
+            @_moving = false
+            @_rotateTo(@_currentRotation * -0.5)
+
           if @_currentSpeed < 0
-            @_delta('+', @_currentSpeed += @_deceleration)
+            dx = @_delta('+', @_currentSpeed += @_deceleration)
           else if @_currentSpeed > 0
-            @_delta('-', @_currentSpeed -= @_deceleration)
-        else if @_movingLeft()
-          if @_currentSpeed > -@_maxSpeed
-            @_delta('-', @_currentSpeed -= @_acceleration)
-          else
-            @_remainder = 0
-            -@_maxSpeed
-        else if @_movingRight()
-          if @_currentSpeed < @_maxSpeed
-            @_delta('+', @_currentSpeed += @_acceleration)
-          else
-            @_remainder = 0
-            @_maxSpeed
+            dx = @_delta('-', @_currentSpeed -= @_deceleration)
+
+          if @_rotating
+            if @_currentRotation < @_apex and @_apex > 0
+              scale = Math.abs(@_apex - @_currentRotation) / Math.abs(@_apex)
+
+              step = if scale < 0.25 then @_step else @_step * 2
+
+              @rotation = @_currentRotation += step
+            else if @_currentRotation > @_apex and @_apex < 0
+              scale = Math.abs(@_currentRotation - @_apex) / Math.abs(@_apex)
+
+              step = if scale < 0.25 then @_step else @_step * 2
+
+              @rotation = @_currentRotation -= step
+            else 
+              targetRotation = @_currentRotation * -0.5
+              unless targetRotation < 1 and targetRotation > -1 
+                @_rotateTo(@_currentRotation * -0.5)
+              else
+                @_rotating = false
+
+        else 
+          if @_movingLeft()
+            if @_moving isnt 'left'
+              @_moving = 'left'
+              @_rotateTo -~~(@_currentSpeed / @_maxSpeed * @_maxRotation)
+
+            if @_currentSpeed > -@_maxSpeed
+              dx = @_delta('-', @_currentSpeed -= @_acceleration)
+            else
+              @_remainder = 0
+              dx = -@_maxSpeed
+
+          else if @_movingRight()
+            if @_moving isnt 'right'
+              @_moving = 'right'
+              @_rotateTo -~~(@_currentSpeed / @_maxSpeed * @_maxRotation)
+
+            if @_currentSpeed < @_maxSpeed
+              dx = @_delta('+', @_currentSpeed += @_acceleration)
+            else
+              @_remainder = 0
+              dx = @_maxSpeed
+
+          # @_rotateTo ~~(@_currentSpeed / @_maxSpeed * @_maxRotation)
+
+          if @_rotating
+            if @_currentRotation < @_apex and @_apex > 0
+
+              scale = Math.abs(@_apex - @_currentRotation) / Math.abs(@_apex)
+
+              step = if scale < 0.25 then @_step else @_step * 2
+
+              @rotation = @_currentRotation += step
+            else if @_currentRotation > @_apex and @_apex < 0
+              scale = Math.abs(@_currentRotation - @_apex) / Math.abs(@_apex)
+
+              step = if scale < 0.25 then @_step else @_step * 2
+
+              @rotation = @_currentRotation -= step
+            else 
+              targetRotation = @_currentRotation * -0.5
+              unless targetRotation < 1 and targetRotation > -1 
+                @_rotateTo(@_currentRotation * -0.5)
+              else
+                @_rotating = false
+              # targetRotation = @_currentRotation * -0.5
+              # unless targetRotation < 1 and targetRotation > -1 
+              #   @_rotateTo(@_currentRotation * -0.5)
+              # else
+              #   @_rotating = false
+
+          # @_rotateTo (@_currentRotation = ~~(@_currentSpeed / @_maxSpeed * @_maxRotation))
+          # @rotateTo (@_currentRotation = ~~(@_currentSpeed / @_maxSpeed * @_maxRotation))
+
+          # @rotation = @_currentRotation = ~~(@_currentSpeed / @_maxSpeed * @_maxRotation)
 
         if dx
           if @x + dx < @_leftEdge()
