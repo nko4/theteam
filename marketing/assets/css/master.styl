@@ -1,7 +1,102 @@
-@import '_settings'
+global-reset()
 
-normalize()
-base()
+html
+  color:        #212120
+  background:   #318494
+  font-family: 'Asap', 'helvetia', 'sans-serif'
 
-body
-  padding: 50px
+.logo
+  height: 213px;
+  position: absolute;
+  left: -100px;
+  margin-bottom: -213px;
+  top: 0;
+
+.header-copy
+  top:      15px
+  position: relative
+
+.primary-panel
+  top:            0
+  left:           50%
+  size            262px 100%
+  padding:        0 10px
+  position:       absolute
+  background:     #fffceb
+  text-align:     center
+  margin-left:    -131px
+  border-left:    solid 5px #144b5a
+  border-right:   solid 5px #144b5a
+
+.download, .like
+  display: block
+  font-size: 26px
+  text-decoration: none
+  font-weight: 700
+  font-style: italic
+  background: #f3c447
+  width: 90%
+  margin: 0 auto
+  border: solid 5px #8B784B
+  border-bottom: solid 9px #8B784B
+  color:        #212120
+  border-radius: 8px
+  margin-top: 40px
+  padding: 9px 0
+  box-sizing: border-box
+
+.like
+  background: #ffffff
+  border-color: #8A8A8A
+  font-weight: 0
+  font-style: normal
+  font-size: 18px
+  img
+    margin-right: 12px
+    position: relative
+    top: 2px
+
+.how-to
+  margin-top: 85px
+
+.description
+  line-height:    24px
+  margin-bottom:  25px
+
+.download
+  margin-top: 40px
+
+.like
+  margin-top: 35px
+  cursor: default
+
+.share-content
+  margin-top: 40px
+
+h2
+  font-style: italic;
+  font-size: 16px;
+  line-height: 20px;
+
+h1 span
+  color:          #212120
+  display:        block
+  font-size:      30px
+  margin-top:     -5px;
+  margin-bottom:  10px
+
+h1, h3
+  color:        #eb483c
+  font-size:    60px
+  font-style:   italic
+  font-weight:  700
+
+h3
+  font-size:      26px
+  margin-bottom:  10px
+
+iframe
+  width: 32%;
+  position: relative;
+  top: -40px;
+  opacity: 0;

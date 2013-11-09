@@ -1,14 +1,23 @@
-!= title_with_markup()
+.primary-panel
+  img.logo(src="img/balloon-cloud-header.png")
+  .header-copy
+    h1
+      | Zoom
+      span the balloon
+    h2 has always dreamed </br> of the moon. Let's go
+  .how-to
+    h3 Play the Game
+    p.description Make Zoom Grow with hot air and fly faster. But be careful; too much air make him pop and too little air makes him fall.
 
-:markdown
-  **Whoo!** You got everything working. Now get to making cool things : )
+  a.download(href="#") Download!
+  a.like(href="#")
+    img(src="img/like-icon.png", width="17px")
+    |Like Zoom? Vote!
+  iframe(src="http://nodeknockout.com/iframe/theteam", frameborder=0, scrolling=no, allowtransparency=true, width=115, height=25)
+  iframe(src="http://nodeknockout.com/iframe/theteam", frameborder=0, scrolling=no, allowtransparency=true, width=115, height=25)
+  iframe(src="http://nodeknockout.com/iframe/theteam", frameborder=0, scrolling=no, allowtransparency=true, width=115, height=25)
 
-p this file can be found in views/index.jade
+  .share-content
+    span(class='st_facebook_hcount', displayText='Facebook')
+    span(class='st_twitter_hcount', displayText='Tweet')
 
-include _partial
-
-:markdown
-  For help and documentation, check out [http://roots.cx](http://roots.cx)
-
-:coffeescript
-  console.log 'you can even use coffeescript in your views, aw yeah'
