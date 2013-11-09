@@ -7,11 +7,26 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
       @bind 'exhale', @exhale
       @bind 'AnimationEnd', (o) =>
         @trigger 'exhaleComplete' if o.reelId is "exhale"
+      @bind 'FrameChange', @handleSizeChange
+
+      @yVelocity    = -3
+      @vVelocityMax = -5
+
+      @bind 'EnterFrame', =>
+        C.viewport.pan "y", @yVelocity, 1
+        @y = @_y + @yVelocity
+
+    handleSizeChange: (o) ->
+      animationCompletion = (o.frameNumber+1) / @_reels[o.reelId].frames.length
+      if o.reelId is 'exhale'
+        @yVelocity = @yVelocity - @vVelocityMax * animationCompletion
+      else
+        @yVelocity = @yVelocity + @vVelocityMax * animationCompletion
 
     inhale: ->
-      @animate('inhale', 4, 0, 7)
+      @animate 'inhale', 4, 0, 7
       @playAnimation 'inhale', 20, 0
 
     exhale: ->
-      @animate('exhale', 7, 0, 4)
+      @animate 'exhale', 7, 0, 4
       @playAnimation 'exhale', 40, 0
