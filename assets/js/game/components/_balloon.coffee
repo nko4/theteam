@@ -1,23 +1,21 @@
 require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
-
   C.c "Balloon",
     init: ->
-      @requires '2D, DOM, Color, Twoway, Float, Breathe, mid_b'
+      @requires '2D, DOM, Twoway, Float, Breathe, mid_b'
       @attr w: 136, h: 190
       @twoway 4, 0
 
   C.c "Breathe",
     _inhale: ->
+      @trigger 'inhale'
     _exhale: ->
+      @trigger 'exhale'
 
     init: ->
-      @requires 'Keyboard'
+      @bind 'KeyDown', (e) =>
+        @_inhale() if e.key is C.keys['SPACE']
       @bind 'KeyUp', (e) ->
-        unless @isDown('SPACE')
-          console.log 'SPACE up'
-      @bind 'KeyDown', (e) ->
-        if @isDown('SPACE')
-          console.log 'SPACE down'
+        @_exhale() if e.key is C.keys['SPACE']
 
   C.c "Float",
     _dy: 0
@@ -37,13 +35,13 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
               else
                 @_dy += 1
                 @y += 1
-            else 
+            else
               @_direction = 'down'
           else
             if @_dy > -10
               if @_dy > 5
                 @_dy -= 1
-                @y -=1                
+                @y -=1
               else if @_dy > -6
                 @_dy -=2
                 @y -=2

@@ -11,4 +11,9 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
     balloon = C.e("Balloon")
     balloon.attr x: _center(balloon), y: (C.viewport.height / 2 - balloon.h / 2)
 
+    face = C.e("Face")
+    face.attr x: _center(balloon), y: (C.viewport.height / 2 - balloon.h / 2 + face.h)
+
+    balloon.attach face
+
     C.e("Cloud")
