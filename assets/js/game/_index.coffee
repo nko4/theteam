@@ -1,4 +1,5 @@
 #= require "_init"
+#= require "../vendor/chroma"
 #= require "scenes/_loading"
 #= require "scenes/_main"
 #= require "_components/_actor"
