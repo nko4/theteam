@@ -1,7 +1,7 @@
 require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
   C.c "Balloon",
     init: ->
-      @requires '2D, DOM, Twoway, Float, Breathe, mid_b'
+      @requires '2D, DOM, Twoway, Float, Breathe, balloon_4'
       @attr w: 136, h: 190
       @twoway 4, 0
 
