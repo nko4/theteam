@@ -2,7 +2,7 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
 
   _center = (component) ->
     C.viewport.width / 2 - component.w / 2
-  
+
   _bottom = (component) ->
     C.viewport.height - component.h
 
