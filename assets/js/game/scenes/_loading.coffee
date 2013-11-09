@@ -1,7 +1,11 @@
 require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
 
   C.scene "loading", ->
+    # this is to fix the caching issue for dom nodes
+    # using a http source makes the browser not reload
+    # TODO move to S3
+    C.load ["https://i.cloudup.com/LD7P27BN1n-3000x3000.png"], ->
+      C.sprite 272, 383, "https://i.cloudup.com/LD7P27BN1n-3000x3000.png",
+        mid_b:  [0,0]
 
-    # load audio and sprites here
-
-    C.scene "main"
+      C.scene "main"
