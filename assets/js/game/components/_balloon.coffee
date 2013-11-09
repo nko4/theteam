@@ -65,12 +65,19 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
   C.c 'Fly',
     _down: {}
 
+    _reflection: -0.75
     _acceleration: 0.15
     _deceleration: 0.05
 
     _maxSpeed: 5
     _currentSpeed: 0
     _remainder: 0
+
+    _leftEdge: ->
+      0
+
+    _rightEdge: ->
+      C.viewport.width - @w
 
     _movingLeft: ->
       @_down['LEFT_ARROW']
@@ -83,33 +90,50 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
         not (@_down['LEFT_ARROW'] or @_down['RIGHT_ARROW'])
 
     _delta: (direction, rate) ->
-      if direction = '+'
+      if direction is '+'
         dx = rate + @_remainder
         @_remainder = (@x + dx) % 1
-      else
+      else if direction is '-'
         dx = rate - @_remainder
         @_remainder = 1 - ((@x + dx) % 1)
+      else
+        console.log direction
 
       ~~dx
+
+    _bounce: ->
+      @_currentSpeed = @_currentSpeed * @_reflection
 
     init: ->
       @requires 'Keyboard'
       @bind 'EnterFrame', (e) ->
-        if @_stopped()
+        dx = if @_stopped()
           if @_currentSpeed < 0
-            @x += @_delta('+', @_currentSpeed += @_deceleration)
+            @_delta('+', @_currentSpeed += @_deceleration)
           else if @_currentSpeed > 0
-            @x += @_delta('-', @_currentSpeed -= @_deceleration)
+            @_delta('-', @_currentSpeed -= @_deceleration)
         else if @_movingLeft()
           if @_currentSpeed > -@_maxSpeed
-            @x += @_delta('-', @_currentSpeed -= @_acceleration)
-          else
-            @x -= @_maxSpeed
+            @_delta('-', @_currentSpeed -= @_acceleration)
+          else 
+            @_remainder = 0
+            -@_maxSpeed
         else if @_movingRight()
           if @_currentSpeed < @_maxSpeed
-            @x += @_delta('+', @_currentSpeed += @_acceleration)
+            @_delta('+', @_currentSpeed += @_acceleration)
+          else 
+            @_remainder = 0
+            @_maxSpeed
+
+        if dx
+          if @x + dx < @_leftEdge()
+            @_bounce()
+            @x = @_leftEdge()
+          else if @x + dx > @_rightEdge()
+            @_bounce()
+            @x = @_rightEdge()
           else
-            @x += @_maxSpeed
+            @x += dx
 
       @bind 'KeyUp', ->
         if not @isDown('LEFT_ARROW') and @_down['LEFT_ARROW']
