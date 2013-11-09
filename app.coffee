@@ -1,8 +1,8 @@
 # roots v2.0.6
 
 # Files in this list will not be compiled - minimatch supported
-ignore_files: ['_*', 'readme*', '.gitignore', '.DS_Store']
-ignore_folders: ['.git']
+ignore_files: ['_*', 'readme*', '.gitignore', '.DS_Store', '*.conf', 'id_deploy', 'id_deploy.pub', 'README.md', 'building.md', 'Gruntfile.coffee', 'server.js', 'deploy', 'favicon.ico']
+ignore_folders: ['.git', 'build', 'node_modules']
 
 # Layout file config
 # `default` applies to all views. Override for specific
