@@ -16,6 +16,7 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
       @bind 'EnterFrame', =>
         C.viewport.pan "y", @yVelocity, 1
         @y = @_y + @yVelocity
+        @setBackgroundColor()
 
     handleSizeChange: (o) ->
       animationCompletion = (o.frameNumber+1) / @_reels[o.reelId].frames.length
@@ -33,3 +34,9 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
     exhale: ->
       @animate 'exhale', 7, 0, 4
       @playAnimation 'exhale', 40, 0
+
+    setBackgroundColor: ->
+      # 399 represents the inital bottom position
+      # 6000 is the viewport height ATM
+      viewPortPercent = -1 * (@_y - 399) / 6000
+      C.background C.backgroundValues(viewPortPercent).hex()

@@ -8,7 +8,8 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
 
   C.init 800, 600, $('.game')[0]
   C.viewport.clampToEntities = false
-  C.background '#aaaaaa'
+  C.backgroundValues = chroma.scale(["#59C6D9", "#257A8B", "#104B5B"])
+  C.background C.backgroundValues(0).hex()
 
   C.generateWorld = ->
     # Draw our game board clouds here
