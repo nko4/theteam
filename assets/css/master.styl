@@ -2,4 +2,37 @@ global-reset()
 
 .game
   size 800 600
-  margin 0 auto
+  position absolute
+  top 0
+  left 0
+
+#hud
+  z-index 100
+  size 800 600
+  position absolute
+  top 0
+  left 0
+  font-family 'Asap', 'helvetica', 'sans-serif'
+  color #fff
+  font-weight 700
+  font-style italic
+  font-size 36px
+  line-height 40px
+  -webkit-text-stroke 3px rgb(27, 100, 118)
+  -moz-text-stroke 3px rgb(27, 100, 118)
+  text-stroke 3px rgb(27, 100, 118)
+
+  .altitude
+    position absolute
+    top 5px
+    left 5px
+
+  .time
+    position absolute
+    top 5px
+    right 40px
+
+  .hearts
+    position absolute
+    bottom 5px
+    right 40px

@@ -18,3 +18,7 @@ require ['crafty'], (C) ->
     face.attr x: _center(balloon) + 18, y: (C.viewport.height - balloon.h - padding + face.h)
 
     balloon.attach face
+
+    # Show Hud
+    hud = new NKO.Views.Hud
+    $("#hud").html hud.render().el
