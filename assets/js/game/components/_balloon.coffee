@@ -5,6 +5,8 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
       @attr w: 136, h: 190
       @bind 'inhale', @inhale
       @bind 'exhale', @exhale
+      @bind 'AnimationEnd', (o) =>
+        @trigger 'exhaleComplete' if o.reelId is "exhale"
 
     inhale: ->
       @animate('inhale', 4, 0, 7)
