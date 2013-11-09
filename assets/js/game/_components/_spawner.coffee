@@ -1,13 +1,17 @@
 require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
 
   C.c "Spawner",
-    whiteCloudStyles: ['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8']
-    blueCloudStyles:  ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8']
-    cloudSpacing:     [40, 60, 80, 100, 120]
-    starStyles:       ['s1', 's2', 's3', 's4']
-    starSpacing:      [2, 3, 5, 7, 9, 12]
+    elements:
+      white:
+        styles:   ['w1', 'w2', 'w3', 'w4', 'w5', 'w6', 'w7', 'w8']
+        spacing:  [80, 100, 120, 140]
+      blue:
+        styles:   ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8']
+        spacing:  [40, 60, 80, 100]
+      star:
+        styles:   ['s1', 's2', 's3', 's4']
+        spacing:  [5, 10, 15, 20, 25]
 
-    spawnRate: 60
     elementsShown: 0
     position: 0
 
@@ -26,7 +30,7 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
 
 
     _addCloud: (type='white') ->
-      style = @_pick(if type is 'white' then @whiteCloudStyles else @blueCloudStyles)
+      style = @_pick(@elements[type].styles)
       cloud = C.e("Cloud, "+style)
       cloud.attr
         w: 183 # need to reset w/h since the Sprite component is loaded after the 2D component
@@ -35,10 +39,10 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
         y: @position
         taret: "Balloon"
 
-      @position -= @_pick(@cloudSpacing) #/ @elementsShown
+      @position -= @_pick(@elements[type].spacing) #/ @elementsShown
 
     _addStar: ->
-      style = @_pick(@starStyles)
+      style = @_pick(@elements.star.styles)
       star = C.e("Cloud, "+style)
       star.attr
         w: 74 # need to reset w/h since the Sprite component is loaded after the 2D component
@@ -47,4 +51,4 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
         y: @position
         taret: "Balloon"
 
-      @position -= @_pick(@cloudSpacing) #/ @elementsShown
+      @position -= @_pick(@elements.star.spacing) #/ @elementsShown
