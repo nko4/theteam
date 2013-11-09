@@ -12,12 +12,17 @@ require ['crafty'], (C) ->
         @trigger 'exhaleComplete' if o.reelId is "exhale"
       @bind 'FrameChange', @handleSizeChange
 
+      @bind "hitCloud", @_onCloudHit
+
       @yVelocity = 0
 
+      C.viewport.follow this, 0, 200
       @bind 'EnterFrame', =>
-        C.viewport.pan "y", @yVelocity, 1
         @y = @_y + @yVelocity
         @setBackgroundColor()
+
+    _onCloudHit: (o) ->
+      @yVelocity = @yVelocity * 0.4
 
     handleSizeChange: (o) ->
       @currentFrame = o.frameNumber
