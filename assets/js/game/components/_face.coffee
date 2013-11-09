@@ -8,6 +8,9 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
       @bind 'EnterFrame', =>
         @unbind 'EnterFrame'
 
+        @parent.bind 'exhaleComplete', =>
+          @sprite(1, 0)
+
         @parent.bind 'inhale', =>
           @sprite(2, 0)
 
