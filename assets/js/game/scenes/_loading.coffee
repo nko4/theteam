@@ -1,8 +1,7 @@
 require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
 
-  window.C = C
+  C.scene "loading", ->
 
-  C.init 500, 350, $('.game')[0]
+    # load audio and sprites here
 
-  C.viewport.clampToEntities = false
-  C.background '#aaaaaa'
+    C.scene "main"
