@@ -7,6 +7,7 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
     C.viewport.height - component.h
 
   C.scene "main", ->
+    C.generateWorld()
 
     balloon = C.e("Balloon")
     balloon.attr x: _center(balloon), y: (C.viewport.height / 2 - balloon.h / 2)
@@ -15,5 +16,3 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
     face.attr x: _center(balloon), y: (C.viewport.height / 2 - balloon.h / 2 + face.h)
 
     balloon.attach face
-
-    C.e("Cloud")
