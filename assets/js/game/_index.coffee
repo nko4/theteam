@@ -11,6 +11,6 @@
 #= require "_components/_balloon"
 #= require "_components/_cloud"
 
-require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
+require ['crafty'], (C) ->
 
   C.scene "loading"

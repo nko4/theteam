@@ -1,4 +1,5 @@
-require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
+require ['crafty'], (C) ->
+
   C.c "Balloon",
     init: ->
       @requires 'Actor, SpriteAnimation, Fly, Float, Breathe, balloon_4'

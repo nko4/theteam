@@ -1,4 +1,5 @@
-require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
+require ['crafty'], (C) ->
+
   C.c "Float",
     _dy: 0
     _direction: 'up'

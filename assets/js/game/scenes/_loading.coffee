@@ -1,4 +1,4 @@
-require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
+require ['crafty'], (C) ->
 
   C.scene "loading", ->
     # load audio and sprites here
