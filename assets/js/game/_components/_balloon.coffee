@@ -9,6 +9,7 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
         @trigger 'exhaleComplete' if o.reelId is "exhale"
       @bind 'FrameChange', @handleSizeChange
 
+      @yVelocityMin =  2
       @yVelocity    = -3
       @vVelocityMax = -5
 
@@ -22,6 +23,8 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
         @yVelocity = @yVelocity - @vVelocityMax * animationCompletion
       else
         @yVelocity = @yVelocity + @vVelocityMax * animationCompletion
+
+      @yVelocity = @yVelocityMin if @yVelocity > @yVelocityMin
 
     inhale: ->
       @animate 'inhale', 4, 0, 7
