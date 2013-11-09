@@ -10,3 +10,8 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
   C.viewport.clampToEntities = false
   C.background '#aaaaaa'
 
+  C.generateWorld = ->
+    # Draw our game board clouds here
+    spawner = C.e("Spawner")
+
+    spawner.spawnElement(num) for num in [1..100]

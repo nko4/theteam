@@ -6,21 +6,39 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
     starStyles: ['s1', 's2', 's3', 's4']
 
     spawnRate: 60
+    elementsShown: 0
+    position: 0
 
     _pick: (from) ->
       from[Math.floor(Math.random() * from.length)]
 
-    init: ->
-      # This is the game loop for every frame.  Do cloud creation here
-      @bind "EnterFrame", (e) ->
-        rate = parseInt(@spawnRate, 10)
-        if e.frame % rate is 0
-          # display a new cloud/star
-          style = @_pick(@whiteCloudStyles) # Style should be based on what level of space vertically you are on
-          cloud = C.e("Cloud, "+style)
-          cloud.attr
-            w: 183 # need to reset w/h since the Sprite component is loaded after the 2D component
-            h: 126
-            x: 100
-            y: 100
-            taret: "Balloon"
+    spawnElement: (num) ->
+      if num < 33
+        @_addCloud()
+      else if num < 67
+        @_addCloud('blue')
+      else
+        @_addStar()
+
+      @elementsShown++
+      @position -= C.viewport.height / @elementsShown
+
+    _addCloud: (type='white') ->
+      style = @_pick(if type is 'white' then @whiteCloudStyles else @blueCloudStyles)
+      cloud = C.e("Cloud, "+style)
+      cloud.attr
+        w: 183 # need to reset w/h since the Sprite component is loaded after the 2D component
+        h: 126
+        x: Math.random() * (C.viewport.width - 183)
+        y: @position
+        taret: "Balloon"
+
+    _addStar: ->
+      style = @_pick(@starStyles)
+      star = C.e("Cloud, "+style)
+      star.attr
+        w: 74 # need to reset w/h since the Sprite component is loaded after the 2D component
+        h: 74
+        x: Math.random() * (C.viewport.width - 74)
+        y: @position
+        taret: "Balloon"
