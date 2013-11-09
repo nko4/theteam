@@ -1,7 +1,7 @@
 require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
   C.c "Balloon",
     init: ->
-      @requires '2D, DOM, SpriteAnimation, Fly, Float, Breathe, balloon_4'
+      @requires 'Actor, SpriteAnimation, Fly, Float, Breathe, balloon_4'
       @attr w: 136, h: 190
       @bind 'inhale', @inhale
       @bind 'exhale', @exhale
@@ -96,7 +96,7 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
       @requires 'Keyboard'
       @bind 'EnterFrame', (e) ->
         if @_stopped()
-          if @_currentSpeed < 0            
+          if @_currentSpeed < 0
             @x += @_delta('+', @_currentSpeed += @_deceleration)
           else if @_currentSpeed > 0
             @x += @_delta('-', @_currentSpeed -= @_deceleration)
