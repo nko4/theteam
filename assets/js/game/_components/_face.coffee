@@ -3,7 +3,7 @@ require ['crafty'], (C) ->
   C.c "Face",
     init: ->
       @requires '2D, DOM, face_normal'
-      @attr w: 112, h: 38
+      @attr w: 84, h: 28
 
       @bind 'EnterFrame', =>
         @unbind 'EnterFrame'
