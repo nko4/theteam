@@ -1,9 +1,8 @@
 require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
   C.c "Balloon",
     init: ->
-      @requires '2D, DOM, SpriteAnimation, Twoway, Float, Breathe, balloon_4'
+      @requires '2D, DOM, SpriteAnimation, Fly, Float, Breathe, balloon_4'
       @attr w: 136, h: 190
-      @twoway 4, 0
       @bind 'inhale', @inhale
       @bind 'exhale', @exhale
 
@@ -60,3 +59,67 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
                 @y -=1
             else
               @_direction = 'up'
+
+  C.c 'Fly',
+    _down: {}
+
+    _acceleration: 0.15
+    _deceleration: 0.05
+
+    _maxSpeed: 5
+    _currentSpeed: 0
+    _remainder: 0
+
+    _movingLeft: ->
+      @_down['LEFT_ARROW']
+
+    _movingRight: ->
+      @_down['RIGHT_ARROW']
+
+    _stopped: ->
+      @_down['LEFT_ARROW'] and @_down['RIGHT_ARROW'] or
+        not (@_down['LEFT_ARROW'] or @_down['RIGHT_ARROW'])
+
+    _delta: (direction, rate) ->
+      if direction = '+'
+        dx = rate + @_remainder
+        @_remainder = (@x + dx) % 1
+      else
+        dx = rate - @_remainder
+        @_remainder = 1 - ((@x + dx) % 1)
+
+      ~~dx
+
+    init: ->
+      @requires 'Keyboard'
+      @bind 'EnterFrame', (e) ->
+        if @_stopped()
+          if @_currentSpeed < 0            
+            @x += @_delta('+', @_currentSpeed += @_deceleration)
+          else if @_currentSpeed > 0
+            @x += @_delta('-', @_currentSpeed -= @_deceleration)
+        else if @_movingLeft()
+          if @_currentSpeed > -@_maxSpeed
+            @x += @_delta('-', @_currentSpeed -= @_acceleration)
+          else
+            @x -= @_maxSpeed
+        else if @_movingRight()
+          if @_currentSpeed < @_maxSpeed
+            @x += @_delta('+', @_currentSpeed += @_acceleration)
+          else
+            @x += @_maxSpeed
+
+      @bind 'KeyUp', ->
+        if not @isDown('LEFT_ARROW') and @_down['LEFT_ARROW']
+          console.log 'LEFT_ARROW UP'
+          @_down['LEFT_ARROW'] = false
+        if not @isDown('RIGHT_ARROW') and @_down['RIGHT_ARROW']
+          console.log 'RIGHT_ARROW UP'
+          @_down['RIGHT_ARROW'] = false
+      @bind 'KeyDown', ->
+        if @isDown('LEFT_ARROW') and not @_down['LEFT_ARROW']
+          console.log 'LEFT_ARROW DOWN'
+          @_down['LEFT_ARROW'] = true
+        if @isDown('RIGHT_ARROW') and not @_down['RIGHT_ARROW']
+          console.log 'RIGHT_ARROW DOWN'
+          @_down['RIGHT_ARROW'] = true
