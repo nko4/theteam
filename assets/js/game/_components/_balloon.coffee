@@ -20,9 +20,9 @@ require ['jquery', 'lodash', 'crafty'], ($, _, C) ->
     handleSizeChange: (o) ->
       animationCompletion = (o.frameNumber+1) / @_reels[o.reelId].frames.length
       if o.reelId is 'exhale'
-        @yVelocity = @yVelocity - @vVelocityMax * animationCompletion
+        @yVelocity = ~~(@yVelocity - @vVelocityMax * animationCompletion)
       else
-        @yVelocity = @yVelocity + @vVelocityMax * animationCompletion
+        @yVelocity = ~~(@yVelocity + @vVelocityMax * animationCompletion)
 
       @yVelocity = @yVelocityMin if @yVelocity > @yVelocityMin
 
