@@ -2,7 +2,7 @@ require ['crafty'], (C) ->
 
   NKO.viewport  = {height: 6000, width: 800}
   NKO.gameState = {}
-  NKO.numberOfClouds = 60
+  NKO.numberOfClouds = 80
 
   window.C = C
 
