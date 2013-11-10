@@ -1,3 +1,5 @@
+
+
 .primary-panel
   img.logo(src="img/balloon-cloud-header.png")
   .header-copy
@@ -9,8 +11,8 @@
     h3 Play the Game
     p.description Make Zoom Grow with hot air <br> and fly faster. But be careful! <br>The clouds and stars along <br> your way can really hurt!
 
-  a.download(href="#") Download!
-  a.play(href="#") (Or Play in Browser)
+  a.download(href="#", id="download") Download!
+  //- a.play(href="#") (Or Play in Browser)
   a.like(href="#")
     img(src="img/like-icon.png", width="17px")
     |Like Zoom? Vote!
@@ -27,3 +29,11 @@
     span(class='st_twitter_hcount', displayText='Tweet', popup="true")
 
 .back-panel
+script.
+  if (navigator.appVersion.indexOf("Win")!=-1) {
+    document.getElementById('download').setAttribute('href', 'windows.zip')
+  }
+
+  if (navigator.appVersion.indexOf("Mac")!=-1) {
+    document.getElementById('download').setAttribute('href', 'mac.zip')
+  }
