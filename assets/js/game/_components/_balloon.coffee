@@ -2,7 +2,7 @@ require ['crafty'], (C) ->
 
   C.c "Balloon",
     init: ->
-      @requires 'Actor, SpriteAnimation, Fly, Float, Breathe, Collision, Flicker, balloon_4, Replayer, Recorder, WiredHitBox'
+      @requires 'Actor, SpriteAnimation, Fly, Float, Breathe, Collision, Flicker, balloon_4, Replayer, Recorder'
       @attr w: 124.1212121212121212, h: 146
 
       @sprite 0, 0
@@ -18,6 +18,8 @@ require ['crafty'], (C) ->
       @bind 'hearts:empty', -> C.scene('end')
 
       @yVelocity = 0
+      @yMax      = -10
+      @yMaxDown  = 3
 
       C.viewport.followX this, 0, 200
       @bind 'EnterFrame', (e) =>
@@ -65,11 +67,13 @@ require ['crafty'], (C) ->
 
       animationCompletion = (o.frameNumber+1) / @_reels[o.reelId].frames.length
       if o.reelId is 'inhale'
-        @yVelocity -= 1
-        @yVelocity = -1 if @yVelocity >= 0
+        @yVelocity = @yMax * animationCompletion
       else if o.reelId is 'exhale'
-        @yVelocity += 2
-        @yVelocity = 2 if @yVelocity > 2
+        if @yVelocity < 0
+          @lastV = @yVelocity
+        else
+          @lastV = 0
+        @yVelocity = @yMaxDown * animationCompletion + @lastV
 
     inhale: ->
       @resetAnimation()
@@ -79,7 +83,7 @@ require ['crafty'], (C) ->
     exhale: ->
       @resetAnimation()
       @animate 'exhale', @currentFrame, 0, 0
-      @playAnimation 'exhale', 90, 0
+      @playAnimation 'exhale', 120, 0
 
     setBackgroundColor: ->
       # 399 represents the inital bottom position
