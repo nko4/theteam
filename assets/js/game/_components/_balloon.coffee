@@ -38,7 +38,7 @@ require ['crafty'], (C) ->
         # Update movement and HUD
         @y = @_y + @yVelocity
         if (@_y*-1) > NKO.viewport.height # we reached the top - game over
-          C.scene("end")
+          C.scene "win"
         else
           NKO.hud.updateAltitude Math.round(@_y*-1)
           @setBackgroundColor()
