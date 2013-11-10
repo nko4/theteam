@@ -19,8 +19,11 @@ require ['crafty'], (C) ->
       C.viewport.followX this, 0, 200
       @bind 'EnterFrame', =>
         @y = @_y + @yVelocity
-        NKO.hud.updateAltitude Math.round((@_y*-1)/10)
-        @setBackgroundColor()
+        if @_y > NKO.viewport.height # we reached the top - game over
+          C.scene("end")
+        else
+          NKO.hud.updateAltitude Math.round((@_y*-1)/10)
+          @setBackgroundColor()
 
     _onCloudHit: (o) ->
       @yVelocity = @yVelocity * 0.4
