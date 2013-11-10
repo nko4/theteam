@@ -1,8 +1,12 @@
 global-reset()
 
 html
-  color:        #212120
-  background:   #318494
+  color: #212120
+  background-color: #318494
+  background-image: url('../img/balloon-tiles.png');
+  background-repeat: tile
+  background-position: center top
+  background-position: calc(50% + 3px) top
   font-family: 'Asap', 'helvetia', 'sans-serif'
 
 .logo
@@ -28,7 +32,7 @@ html
   border-left:    solid 5px #144b5a
   border-right:   solid 5px #144b5a
 
-.back-panel 
+.back-panel
   top: 0
   left: 50%
   size: 262px 100%
@@ -56,8 +60,8 @@ html
   margin-top: 40px
   padding: 9px 0
   box-sizing: border-box
-  &:hover  
-    background: #F8DC88 
+  &:hover
+    background: #F8DC88
   &:active
     border-bottom: solid 5px #8B784B
     margin-top: 44px
@@ -70,7 +74,7 @@ html
   font-weight: 0
   font-style: italic
   font-size: 18px
-  &:hover  
+  &:hover
     background: #ffffff
   &:active
     border-bottom: solid 5px #8A8A8A
@@ -87,7 +91,7 @@ html
   font-style: italic
   margin-top: 12px
   display: inline-block
-  &:hover 
+  &:hover
     color: #231F20
 
 .how-to
