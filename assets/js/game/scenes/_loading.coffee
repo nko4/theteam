@@ -1,4 +1,4 @@
-require ['crafty', 'goinstant', 'uuid'], (C) ->
+NKO.Game.Scenes.push (C) ->
 
   C.scene "loading", ->
     # load audio and sprites here

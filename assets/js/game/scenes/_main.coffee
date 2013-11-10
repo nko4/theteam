@@ -1,4 +1,4 @@
-require ['crafty'], (C) ->
+NKO.Game.Scenes.push (C) ->
 
   _center = (component) ->
     C.viewport.width / 2 - component.w / 2

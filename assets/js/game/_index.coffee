@@ -23,7 +23,7 @@
 #= require "_components/_replayer"
 
 require ['crafty'], (C) ->
-  if C._scenes['loading']
-    C.scene "loading"
-  else
-    setTimeout (-> C.scene "loading"), 100
+  s(C) for s in NKO.Game.Scenes
+  c(C) for c in NKO.Game.Components
+
+  C.scene "loading"

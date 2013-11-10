@@ -1,5 +1,4 @@
-require ['crafty'], (C) ->
-
+NKO.Game.Scenes.push (C) ->
   C.scene "end", ->
     $('.end-game-display-area').addClass('ended').html(
       templates.game_over(
