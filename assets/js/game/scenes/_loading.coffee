@@ -1,4 +1,4 @@
-require ['crafty'], (C) ->
+require ['crafty', 'goinstant', 'uuid'], (C) ->
 
   C.scene "loading", ->
     # load audio and sprites here
@@ -88,6 +88,11 @@ require ['crafty'], (C) ->
         s9:  [8,0]
         s10: [9,0]
       }
+
+      NKO.database.connect ->
+        @get 'highScores', (error, highScores) ->
+          unless error
+            NKO.highScores = highScores
 
       # Attempt to load gameState from goinstant database. Ex:
       #   http://localhost:1111/?gameState=8092ad4d-0a82-446b-b2c0-0c4ccb2298ad

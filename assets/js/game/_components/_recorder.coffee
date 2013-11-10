@@ -16,11 +16,11 @@ require ['crafty'], (C) ->
       @bind 'KeyUp', (e) ->
         if e.key of @_keyStates
           @_keyStates[e.key]         = false
-          @_keyEventsThisTick[e.key] = false
+          @_keyEventsThisTick[e.key] = 0
 
       @bind 'KeyDown', (e) ->
         @_keyStates[e.key]         = true
-        @_keyEventsThisTick[e.key] = true
+        @_keyEventsThisTick[e.key] = 1
 
       @bind 'EnterFrame', (e) ->
         _firstFrame = e.frame unless _firstFrame?

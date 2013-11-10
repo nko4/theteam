@@ -1,6 +1,7 @@
 #= require "crafty-custom-follow"
 #= require "_init"
 #= require "_database"
+#= require "_scores"
 #= require "../vendor/chroma"
 #= require "models/_player"
 #= require "views/_hud"
