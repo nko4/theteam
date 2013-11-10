@@ -13,6 +13,8 @@
 #= require "_components/_breathe"
 #= require "_components/_balloon"
 #= require "_components/_cloud"
+#= require "_components/_recorder"
+#= require "_components/_replayer"
 
 require ['crafty'], (C) ->
   C.scene "loading"

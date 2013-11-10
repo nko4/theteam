@@ -1,8 +1,6 @@
 require ['crafty'], (C) ->
 
   C.c 'Fly',
-    _down: {}
-
     _reflection: -0.75
     _acceleration: 0.15
     _deceleration: 0.05
@@ -16,21 +14,21 @@ require ['crafty'], (C) ->
     _currentSpeed: 0
     _remainder: 0
 
+    _isDown: (key) ->
+      @_keyStates[C.keys[key]]
+
     _leftEdge: ->
       0
 
     _rightEdge: ->
       C.viewport.width - @w
 
-    _movingLeft: ->
-      @_down['LEFT_ARROW']
+    _movingLeft: (frame) -> @_isDown('LEFT_ARROW', frame)
+    _movingRight: (frame) -> @_isDown('RIGHT_ARROW', frame)
 
-    _movingRight: ->
-      @_down['RIGHT_ARROW']
-
-    _stopped: ->
-      @_down['LEFT_ARROW'] and @_down['RIGHT_ARROW'] or
-        not (@_down['LEFT_ARROW'] or @_down['RIGHT_ARROW'])
+    _stopped: (frame) ->
+      @_isDown('LEFT_ARROW', frame) and @_isDown('RIGHT_ARROW', frame) or
+        not (@_isDown('LEFT_ARROW', frame) or @_isDown('RIGHT_ARROW', frame))
 
     _delta: (direction, rate) ->
       if direction is '+'
@@ -53,9 +51,8 @@ require ['crafty'], (C) ->
       @_step = 0.2
 
     init: ->
-      @requires 'Keyboard'
       @bind 'EnterFrame', (e) ->
-        if @_stopped()
+        if @_stopped(e.frame)
           if @_moving
             @_moving = false
             @_rotateTo(@_currentRotation * -0.5)
@@ -76,13 +73,13 @@ require ['crafty'], (C) ->
             @_swinging = true
             @_rotateTo (@_currentSpeed / @_maxSpeed * @_maxRotation) * -1
 
-          if @_movingLeft()
+          if @_movingLeft(e.frame)
             if @_currentSpeed > -@_maxSpeed
               dx = @_delta('-', @_currentSpeed -= @_acceleration)
             else
               @_remainder = 0
               dx = -@_maxSpeed
-          else if @_movingRight()
+          else if @_movingRight(e.frame)
             if @_currentSpeed < @_maxSpeed
               dx = @_delta('+', @_currentSpeed += @_acceleration)
             else
@@ -115,14 +112,3 @@ require ['crafty'], (C) ->
             @x = @_rightEdge()
           else
             @x += dx
-
-      @bind 'KeyUp', ->
-        if not @isDown('LEFT_ARROW') and @_down['LEFT_ARROW']
-          @_down['LEFT_ARROW'] = false
-        if not @isDown('RIGHT_ARROW') and @_down['RIGHT_ARROW']
-          @_down['RIGHT_ARROW'] = false
-      @bind 'KeyDown', ->
-        if @isDown('LEFT_ARROW') and not @_down['LEFT_ARROW']
-          @_down['LEFT_ARROW'] = true
-        if @isDown('RIGHT_ARROW') and not @_down['RIGHT_ARROW']
-          @_down['RIGHT_ARROW'] = true
