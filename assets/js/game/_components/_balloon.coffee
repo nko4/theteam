@@ -2,7 +2,7 @@ require ['crafty'], (C) ->
 
   C.c "Balloon",
     init: ->
-      @requires 'Actor, SpriteAnimation, Fly, Float, Breathe, Replayer, Recorder, balloon_4'
+      @requires 'Actor, SpriteAnimation, Fly, Float, Breathe, Replayer, Recorder, balloon_4, Collision, WiredHitBox'
       @attr w: 124.1212121212121212, h: 146
       @sprite 0, 0
       @currentFrame = 0
