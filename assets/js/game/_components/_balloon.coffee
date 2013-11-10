@@ -42,7 +42,7 @@ NKO.Game.Components.push (C) ->
 
       @onHit "Cloud", (evt) ->
         unless NKO.gameState.replay
-          C.audio.play 'cloud', 1, 0.2
+          C.audio.play 'cloud', 1, 0.25
         if not @flickering
           @flickering = true
           NKO.hud.removeHeart()
