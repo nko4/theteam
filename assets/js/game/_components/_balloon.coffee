@@ -19,6 +19,8 @@ require ['crafty'], (C) ->
 
       @yVelocity = 0
 
+      @collision([36.954,0],[59.685,0],[83.214,0],[108.913,32.536],[106.74,73.893],[71.577,118.594],[51.16,118.594],[13.158999999999999,76.489],[11,34.057])
+
       C.viewport.followX this, 0, 200
       @bind 'EnterFrame', (e) =>
         # Handle flickering
