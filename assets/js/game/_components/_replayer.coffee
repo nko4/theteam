@@ -5,7 +5,7 @@ require ['crafty'], (C) ->
     _keyEvents: {}
 
     _replay: (keyEvents) ->
-      @_keyEvents = keyEvents
+      @_keyEvents = _.clone(keyEvents)
 
     init: ->
       @bind 'EnterFrame', (e) ->
