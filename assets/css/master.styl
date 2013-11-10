@@ -23,9 +23,26 @@ global-reset()
   text-stroke 3px rgb(27, 100, 118)
 
   .altitude
-    position absolute
-    top 5px
-    left 5px
+    .indicator
+      position absolute
+      top 15px
+      left 10px
+      size 25px 550px
+      border-radius 10px
+      background-color rgba(255, 255, 255, 0.5)
+
+      .dot
+        background-color red
+        size 15px 15px
+        border-radius 10px
+        position absolute
+        bottom 10px
+        left 5px
+
+    .mileage
+      position absolute
+      top 5px
+      left 45px
 
   .time
     position absolute

@@ -22,6 +22,7 @@ require ['crafty'], (C) ->
       @yMaxDown  = 3
 
       C.viewport.followX this, 0, 200
+
       @bind 'EnterFrame', (e) =>
         # Handle flickering
         if @flickering
@@ -33,10 +34,10 @@ require ['crafty'], (C) ->
 
         # Update movement and HUD
         @y = @_y + @yVelocity
-        if @_y > NKO.viewport.height # we reached the top - game over
+        if (@_y*-1) > NKO.viewport.height # we reached the top - game over
           C.scene("end")
         else
-          NKO.hud.updateAltitude Math.round((@_y*-1)/10)
+          NKO.hud.updateAltitude Math.round(@_y*-1)
           @setBackgroundColor()
 
       @onHit "Cloud", (evt) ->

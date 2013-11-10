@@ -2,8 +2,13 @@ class NKO.Views.Hud extends Backbone.View
   template: window.templates.hud_layout
   className: 'hud-layout'
 
+  initialize: ->
+    @indicatorHeight = 530
+    @viewportHieght = NKO.viewport.height
+
   updateAltitude: (alt) ->
-    @$('.altitude').text "#{alt}mi"
+    @$('.dot').css 'bottom': "#{@_convertToSidebar(alt)}px"
+    @$('.mileage').text "#{@_convertToEarthMiles(alt)}mi"
 
   addHeart: ->
     $emptyHeart = @$(".heart.empty").last()
@@ -41,3 +46,9 @@ class NKO.Views.Hud extends Backbone.View
     if (seconds < 10) then seconds = "0#{seconds}"
 
     "#{minutes}:#{seconds}"
+
+  _convertToSidebar: (num) ->
+    (num+450) * (520/6450) + 10
+
+  _convertToEarthMiles: (num) ->
+    Math.max 0, Math.round( (num+450) * (225000/6450) )
