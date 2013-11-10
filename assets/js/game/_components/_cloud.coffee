@@ -4,8 +4,3 @@ require ['crafty'], (C) ->
     init: ->
       @requires 'Actor, Collision, WiredHitBox'
       @attr w: 183, h: 126
-
-      @onHit "Balloon", (t) ->
-        t[0].obj.trigger 'hitCloud',
-          normal:  t[0].normal
-          overlap: t[0].overlap

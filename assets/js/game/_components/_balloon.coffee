@@ -12,11 +12,10 @@ require ['crafty'], (C) ->
         @trigger 'exhaleComplete' if o.reelId is "exhale"
       @bind 'FrameChange', @handleSizeChange
 
-      @bind "hitCloud", @_onCloudHit
-
       @yVelocity = 0
 
       C.viewport.followX this, 0, 200
+
       @bind 'EnterFrame', =>
         @y = @_y + @yVelocity
         if @_y > NKO.viewport.height # we reached the top - game over
@@ -25,8 +24,9 @@ require ['crafty'], (C) ->
           NKO.hud.updateAltitude Math.round((@_y*-1)/10)
           @setBackgroundColor()
 
-    _onCloudHit: (o) ->
-      @yVelocity = @yVelocity * 0.4
+      @onHit "Cloud", (evt) ->
+        _.debounce NKO.hud.removeHeart, 500, {leading: true, trailing: false}
+        @yVelocity = @yVelocity * 0.4
 
     handleSizeChange: (o) ->
       @currentFrame = o.frameNumber
