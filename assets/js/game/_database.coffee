@@ -24,6 +24,9 @@ require ['goinstant', 'uuid'], ->
     set: (key, value, callback) ->
       @lobby.key(key).set(value, callback)
 
+    remove: (key, callback) ->
+      @lobby.key(key).remove(callback)
+
   NKO.database = new NKO.Database
 
   # NKO.database.connect ->
