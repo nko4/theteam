@@ -1,4 +1,4 @@
-require ['crafty'], (C) ->
+NKO.Game.Scenes.push (C) ->
 
   render = (template, time) ->
     $('.end-game-display-area').addClass('ended').html template {time}

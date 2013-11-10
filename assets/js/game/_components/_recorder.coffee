@@ -1,4 +1,4 @@
-require ['crafty'], (C) ->
+NKO.Game.Components.push (C) ->
 
   _firstFrame = null
 

@@ -1,4 +1,5 @@
-require ['crafty'], (C) ->
+NKO.Game.Scenes.push (C) ->
+
   C.scene "start", ->
     $('.pre-game-container').html(templates.start())
 
