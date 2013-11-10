@@ -14,21 +14,24 @@ global-reset()
   font-style italic
   font-size 36px
   line-height 40px
-  -webkit-text-stroke 3px rgb(27, 100, 118)
-  -moz-text-stroke 3px rgb(27, 100, 118)
-  text-stroke 3px rgb(27, 100, 118)
+
+
 
   .altitude
     .indicator
       position absolute
-      top 15px
-      left 10px
-      size 25px 550px
-      border-radius 10px
-      background-color rgba(255, 255, 255, 0.5)
+      top 24px
+      left 30px
+      size 25px 540px
+      border-radius 8px   
+      border 5px solid #C0E5E8
+      background: linear-gradient(bottom, #59c6d9, 70% #257a8b, #104b5b)
+      // background-color #257A8B
+    
+
 
       .dot
-        background-color red
+        background-color #EE4735
         size 15px 15px
         border-radius 10px
         position absolute
@@ -37,18 +40,32 @@ global-reset()
 
     .mileage
       position absolute
-      top 5px
-      left 45px
+      top 22px
+      left 80px
+      z-index: 2
+
+    .stroke
+      z-index: 1
+      -webkit-text-stroke 10px rgb(27, 100, 118)
+      -moz-text-stroke 10px rgb(27, 100, 118)
+      text-stroke 10px rgb(27, 100, 118)
 
   .time
     position absolute
-    top 5px
-    right 5px
+    top 22px
+    right 30px
+    z-index: 2
+
+  .stroke
+    -webkit-text-stroke 10px rgb(27, 100, 118)
+    -moz-text-stroke 10px rgb(27, 100, 118)
+    text-stroke 10px rgb(27, 100, 118)
+    z-index: 1
 
   .hearts
     position absolute
-    bottom 5px
-    right 5px
+    bottom 30px
+    right 30px
 
     .heart
       size 44 40
