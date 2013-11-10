@@ -35,7 +35,7 @@
     text-overflow ellipsis
     white-space nowrap
     overflow hidden
-    width 150px
+    width 145px
 
   .score
     margin-left 40px
@@ -47,8 +47,22 @@
     height 600px
 
   iframe, .overlay
-    height 150px
-    width 200px
+    height 145px
+    width 190px
+
+  .overlay
+    border-top solid 5px #104b5b
+    border-left solid 5px #104b5b
+    border-right solid 5px #104b5b
+
+    &.last
+      border-bottom solid 5px #104b5b
+      height 140px
+
+    &:hover
+      opacity: .8
+      background: #257a8b
+      cursor pointer
 
 .primary-panel
   float           left
@@ -58,8 +72,6 @@
   position:       relative
   background:     #fffceb
   text-align:     center
-  border-left:    solid 5px #144b5a
-  border-right:   solid 5px #144b5a
   height: 600px
   box-sizing: border-box
 
@@ -120,6 +132,7 @@
 
   .retry
     display: inline-block
+    cursor pointer
 
   .share-copy
     margin-bottom: 10px
@@ -133,6 +146,7 @@
     bottom: 0;
     width: 490px;
     left: -62px;
+    z-index 30
 
   .left-arrow
     width: 16px
