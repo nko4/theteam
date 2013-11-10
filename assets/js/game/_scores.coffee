@@ -7,9 +7,9 @@ require ['crafty', 'goinstant', 'uuid'], (C) ->
 
   NKO.isHighScore = (score) ->
     if NKO.highScores
-      scores = _(NKO.highScores).values().sort('score').first(10)
+      scores = _(NKO.highScores).values().sortBy('score').first(10)
 
-      !!(scores.value().length < 10 or scores.find (s) -> s.score < score)
+      !!(scores.value().length < 10 or scores.find (s) -> s.score > score)
     else
       return true
 
@@ -26,7 +26,7 @@ require ['crafty', 'goinstant', 'uuid'], (C) ->
           s.id = id
           s
 
-        remove = _(NKO.highScores).map(squashId).sort('score').rest(100).pluck('id')
+        remove = _(NKO.highScores).map(squashId).sortBy('score').rest(100).pluck('id')
 
         if remove
           for id in remove
