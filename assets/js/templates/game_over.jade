@@ -1,13 +1,16 @@
 .retry-game-over
   .primary-panel
+    img.left-arrow(src="img/arrow-left.png", width="32px") 
+    p.high-scores See the highest scoring games! 
+    img.right-arrow(src="img/arrow-right.png", width="32px")
     .header-copy
       h1 Oh no!
       h2 Maybe zoom wouldn't have liked the moon anyway.
     .how-to
-      h3 Highest Altitude
+      h3 Highest Altitude:
       p.description #{miles}mi
 
-    p.button-copy Want to give it another go?
+    p.button-copy.subtitle Want to give it another go?
     .retry(onClick="history.go(0)") Retry!
 
     .share-content

@@ -1,13 +1,16 @@
 .retry-game-over
   .primary-panel.win
+    img.left-arrow(src="img/arrow-left.png", width="32px") 
+    p.high-scores See the highest scoring games! 
+    img.right-arrow(src="img/arrow-right.png", width="32px")
     .header-copy
       h1 Hooray!
-      h2 You and Zoom reached the moon!
+      h2.you-and-zoom You and Zoom reached the moon!
     .how-to
       h3 Your Time:
       p.description #{time}
 
-    p.button-copy Want to do it again?
+    p.button-copy.subtitle Want to do it again?
     a.retry(onClick="history.go(0)") Let's go!
 
     .share-content

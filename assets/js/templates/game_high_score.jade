@@ -1,5 +1,8 @@
 .retry-game-over
   .primary-panel.win
+    img.left-arrow(src="img/arrow-left.png", width="32px") 
+    p.high-scores See the highest scoring games! 
+    img.right-arrow(src="img/arrow-right.png", width="32px")
     .header-copy
       h1 Yowza!
       h2 You just owned space!
@@ -9,7 +12,7 @@
       br/
       p.description.note That's a record!
 
-    p.prompt What's your name?
+    p.prompt.subtitle What's your name?
     .input-block
       input(type="text", placeholder="your name?")
       a.get-famous(href="#") Get Famous!
