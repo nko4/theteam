@@ -102,6 +102,6 @@ require ['crafty', 'goinstant', 'uuid'], (C) ->
             unless error
               NKO.gameState        = gameState
               NKO.gameState.replay = true
-            C.scene 'main'
+            C.scene 'start'
       else
-        C.scene "main"
+        C.scene "start"
