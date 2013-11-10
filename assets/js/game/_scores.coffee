@@ -14,7 +14,6 @@ require ['crafty', 'goinstant', 'uuid'], (C) ->
       return true
 
   NKO.submitHighScore = (score, name, state, callback) ->
-
     id = UUID()
 
     NKO.database.connect ->

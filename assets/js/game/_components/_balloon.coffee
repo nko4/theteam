@@ -15,10 +15,7 @@ require ['crafty'], (C) ->
       @bind 'AnimationEnd', (o) =>
         @trigger 'exhaleComplete' if o.reelId is "exhale"
       @bind 'FrameChange', @handleSizeChange
-      @bind 'hearts:empty', ->
-        unless NKO.gameState.replay
-          NKO.gameState = @_save()
-        C.scene('end')
+      @bind 'hearts:empty', -> C.scene('end')
 
       @yVelocity = 0
       @yMax      = -10
