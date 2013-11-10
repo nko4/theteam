@@ -7,10 +7,10 @@ require ['crafty'], (C) ->
         spacing:  [80, 100, 120, 140]
       blue:
         styles:   ['b1', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8']
-        spacing:  [40, 60, 80, 100]
+        spacing:  [80, 100, 120, 140]
       star:
         styles:   ['s1', 's2', 's3', 's4']
-        spacing:  [5, 10, 15, 20, 25]
+        spacing:  [20, 30, 40, 50]
 
     elementsShown: 0
     position: 0
@@ -21,12 +21,12 @@ require ['crafty'], (C) ->
     spawnElement: (num) ->
       @elementsShown++
 
-      levelThirds = NKO.numberOfClouds/3
       rand = NKO.seededNumbers[num]
 
-      if num < levelThirds
+      # Board is split into 30+30+40 (white + blue + stars)
+      if num < NKO.numberOfClouds * .3
         @_addCloud(rand)
-      else if num < levelThirds*2
+      else if num < NKO.numberOfClouds * .6
         @_addCloud(rand, 'blue')
       else
         @_addStar(rand)
