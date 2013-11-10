@@ -42,4 +42,3 @@ NKO.Game.Scenes.push (C) ->
     # Show Hud
     NKO.hud = new NKO.Views.Hud
     $("#hud").html NKO.hud.render().el
-    if NKO.gameState.replay then $("#hud").hide()
