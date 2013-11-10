@@ -1,4 +1,10 @@
 require ['crafty'], (C) ->
 
   C.scene "end", ->
-    console.log "End Scene"
+    $('.end-game-display-area').addClass('ended').html(
+      templates.game_over(
+        miles: NKO.hud.getScore()
+      )
+    )
+
+    stButtons.locateElements()
