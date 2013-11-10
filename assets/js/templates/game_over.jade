@@ -1,24 +1,24 @@
 .retry-game-over
   .side-panel.left-panel
     .iframes
-      iframe(src="http://localhost:1111/?gameState=a631e0d1-848e-479e-8659-2b87e800b7eb", scrolling="no")
-      iframe
-      iframe
-      iframe
+      iframe(scrolling="no")
+      iframe(scrolling="no")
+      iframe(scrolling="no")
+      iframe(scrolling="no")
     .overlays
-      .overlay
+      .overlay(data-src=keys[0], data-index=0)
         h3 1
         p.name #{names[0]}
         p.score #{highScores[0]}
-      .overlay
+      .overlay(data-src=keys[1], data-index=1)
         h3 2
         p.name #{names[1]}
         p.score #{highScores[1]}
-      .overlay
+      .overlay(data-src=keys[2], data-index=2)
         h3 3
         p.name #{names[2]}
         p.score #{highScores[2]}
-      .overlay
+      .overlay(data-src=keys[3], data-index=3)
         h3 4
         p.name #{names[3]}
         p.score #{highScores[3]}
@@ -43,24 +43,24 @@
     img.moon(src="img/moon-footer.png")
   .side-panel.right-panel
     .iframes
-      iframe
-      iframe
-      iframe
-      iframe
+      iframe(scrolling="no")
+      iframe(scrolling="no")
+      iframe(scrolling="no")
+      iframe(scrolling="no")
     .overlays
-      .overlay
+      .overlay(data-src=keys[4], data-index=4)
         h3 5
         p.name #{names[4]}
         p.score #{highScores[4]}
-      .overlay
+      .overlay(data-src=keys[5], data-index=5)
         h3 6
         p.name #{names[5]}
         p.score #{highScores[5]}
-      .overlay
+      .overlay(data-src=keys[6], data-index=6)
         h3 7
         p.name #{names[6]}
         p.score #{highScores[6]}
-      .overlay
+      .overlay(data-src=keys[7], data-index=7)
         h3 8
         p.name #{names[7]}
         p.score #{highScores[7]}
