@@ -1,5 +1,7 @@
 require ['crafty'], (C) ->
 
+  _firstFrame = null
+
   C.c 'Recorder',
     _keyStates: {}
     _keyEvents: {}
@@ -21,7 +23,9 @@ require ['crafty'], (C) ->
         @_keyEventsThisTick[e.key] = true
 
       @bind 'EnterFrame', (e) ->
+        _firstFrame = e.frame unless _firstFrame?
+
         unless _.isEmpty(@_keyEventsThisTick)
-          @_keyEvents[e.frame] = @_keyEventsThisTick
+          @_keyEvents[e.frame - _firstFrame] = @_keyEventsThisTick
 
         @_keyEventsThisTick  = {}
