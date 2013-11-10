@@ -2,6 +2,7 @@
 #= require "_init"
 #= require "../vendor/chroma"
 #= require "models/_player"
+#= require "views/_hud"
 #= require "scenes/_loading"
 #= require "scenes/_main"
 #= require "_components/_actor"
