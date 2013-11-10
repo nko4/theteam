@@ -14,6 +14,21 @@ require ['crafty'], (C) ->
     balloon = C.e("Balloon")
     balloon.attr x: _center(balloon), y: (C.viewport.height - balloon.h - padding)
 
+    # Uncomment to see a replay in action
+    # balloon._replay
+    #   5:
+    #     32: 1
+    #     37: 1
+    #   100:
+    #     37: 0
+    #     39: 1
+    #   200:
+    #     37: 1
+    #     39: 0
+    #   300:
+    #     32: 0
+
+
     face = C.e("Face")
     face.attr x: _center(balloon) + 18, y: (C.viewport.height - balloon.h - padding + face.h)
 
