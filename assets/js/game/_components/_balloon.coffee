@@ -41,6 +41,8 @@ NKO.Game.Components.push (C) ->
           @setBackgroundColor()
 
       @onHit "Cloud", (evt) ->
+        unless NKO.gameState.replay
+          C.audio.play 'cloud', 1, 0.2
         if not @flickering
           @flickering = true
           NKO.hud.removeHeart()
@@ -75,11 +77,15 @@ NKO.Game.Components.push (C) ->
         @yVelocity = @yMaxDown * animationCompletion + @lastV
 
     inhale: ->
+      unless NKO.gameState.replay
+        C.audio.play 'inhale', 1, 1
       @resetAnimation()
       @animate 'inhale', 0, 0, 31
       @playAnimation 'inhale', 90, 0
 
     exhale: ->
+      unless NKO.gameState.replay
+        C.audio.play 'exhale', 1, 0.5
       @resetAnimation()
       @animate 'exhale', @currentFrame, 0, 0
       @playAnimation 'exhale', 120, 0

@@ -13,7 +13,21 @@ NKO.Game.Scenes.push (C) ->
       "img/clouds-blue.png"
       "img/stars.png"
       "img/moon-header.png"
+      "mp3/zoom.mp3"
+      "mp3/bounce.mp3"
+      "mp3/inhale.mp3"
+      "mp3/exhale.mp3"
+      "mp3/cloud.mp3"
     ], ->
+
+      C.audio.add({
+        overture: ['/mp3/zoom.mp3']
+        inhale: ['/mp3/inhale.mp3']
+        exhale: ['/mp3/exhale.mp3']
+        bounce: ['/mp3/bounce.mp3']
+        cloud: ['/mp3/cloud.mp3']
+      });
+
       C.sprite 248.24242424242424, 292, "http://s3.amazonaws.com/samexhibit/production/files/12231/a6a14b43ebc867fa11b3b8d817ddbff992b6f935.png?1384030033",
         balloon_0:  [0, 0]
         balloon_1:  [1, 0]
@@ -111,4 +125,5 @@ NKO.Game.Scenes.push (C) ->
         if NKO.gameState.replay
           C.scene 'main'
         else
+          C.audio.play 'overture', -1, 0.5
           C.scene 'start'

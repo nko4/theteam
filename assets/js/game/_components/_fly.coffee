@@ -41,6 +41,8 @@ NKO.Game.Components.push (C) ->
       ~~dx
 
     _bounce: ->
+      unless NKO.gameState.replay
+        C.audio.play 'bounce', 1, 0.3
       @_currentSpeed = @_currentSpeed * @_reflection
 
     _rotateTo: (angle) ->
