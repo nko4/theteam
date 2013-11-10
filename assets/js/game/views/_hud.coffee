@@ -2,11 +2,6 @@ class NKO.Views.Hud extends Backbone.View
   template: window.templates.hud_layout
   className: 'hud-layout'
 
-  initialize: ->
-    @on 'heart:remove', 'removeHeart'
-    @on 'heart:add', 'addHeart'
-    @on 'altitude:change', 'updateAltitude'
-
   updateAltitude: (alt) ->
     @$('.altitude').text "#{alt}mi"
 
@@ -16,11 +11,11 @@ class NKO.Views.Hud extends Backbone.View
       $emptyHeart.removeClass('empty').addClass('full')
 
   removeHeart: ->
-    $fullHeart = @$(".heart.full").first()
-    if _.isEmpty($fullHeart)
+    $fullHearts = @$(".heart.full")
+    $fullHearts.first().removeClass('full').addClass('empty')
+
+    if $fullHearts.length is 1
       NKO.balloon.trigger("hearts:empty")
-    else
-      $fullHeart.removeClass('full').addClass('empty')
 
   startTimer: ->
     start = new Date
