@@ -19,6 +19,7 @@
 #= require "_components/_flicker"
 #= require "_components/_balloon"
 #= require "_components/_cloud"
+#= require "_components/_moon"
 #= require "_components/_recorder"
 #= require "_components/_replayer"
 
