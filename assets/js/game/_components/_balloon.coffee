@@ -19,6 +19,7 @@ require ['crafty'], (C) ->
       C.viewport.followX this, 0, 200
       @bind 'EnterFrame', =>
         @y = @_y + @yVelocity
+        NKO.hud.updateAltitude Math.round((@_y*-1)/10)
         @setBackgroundColor()
 
     _onCloudHit: (o) ->

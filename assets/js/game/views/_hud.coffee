@@ -5,6 +5,10 @@ class NKO.Views.Hud extends Backbone.View
   initialize: ->
     @on 'heart:remove', 'removeHeart'
     @on 'heart:add', 'addHeart'
+    @on 'altitude:change', 'updateAltitude'
+
+  updateAltitude: (alt) ->
+    @$('.altitude').text "#{alt}mi"
 
   addHeart: ->
     $emptyHeart = @$(".heart.empty").last()
