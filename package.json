@@ -8,7 +8,7 @@
     "title": "zoom-the-balloon",
     "icon": "./icon.png",
     "toolbar": false,
-    "frame": false,
+    "frame": true,
     "width": 800,
     "height": 600,
     "position": "mouse",
