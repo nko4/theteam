@@ -47,6 +47,5 @@ require ['crafty'], (C) ->
 
     setBackgroundColor: ->
       # 399 represents the inital bottom position
-      # 6000 is the viewport height ATM
-      viewPortPercent = -1 * (@_y - 399) / 6000
+      viewPortPercent = -1 * (@_y - 399) / NKO.viewport.height
       C.background C.backgroundValues(viewPortPercent).hex()
