@@ -24,3 +24,14 @@ require ['crafty'], (C) ->
     # Draw our game board clouds here
     spawner = C.e("Spawner")
     spawner.spawnElement(num) for num in [1..NKO.numberOfClouds]
+
+  NKO.toHHMMSS = (int) ->
+    num     = parseInt(int, 10)
+    hours   = Math.floor(num/3600)
+    minutes = Math.floor((num - (hours*3600)) / 60)
+    seconds = num - (hours*3600) - (minutes*60)
+
+    if (minutes < 10) then minutes = "0#{minutes}"
+    if (seconds < 10) then seconds = "0#{seconds}"
+
+    "#{minutes}:#{seconds}"
