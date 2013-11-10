@@ -89,4 +89,14 @@ require ['crafty'], (C) ->
         s10: [9,0]
       }
 
-      C.scene "main"
+      # Attempt to load gameState from goinstant database. Ex:
+      #   http://localhost:1111/?gameState=8092ad4d-0a82-446b-b2c0-0c4ccb2298ad
+      if gameState = (/gameState=(.+?)(&|$)/.exec(location.search) or [null, null])[1]
+        NKO.database.connect ->
+          @get "gameStates/#{gameState}", (error, gameState) ->
+            unless error
+              NKO.gameState        = gameState
+              NKO.gameState.replay = true
+            C.scene 'main'
+      else
+        C.scene "main"
