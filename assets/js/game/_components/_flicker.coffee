@@ -1,7 +1,7 @@
 require ['crafty'], (C) ->
 
   C.c "Flicker",
-    flickering: true
+    flickering: false
     init: ->
       @flicker = true
       @bind "EnterFrame", (e) ->

@@ -11,6 +11,7 @@
 #= require "_components/_fly"
 #= require "_components/_float"
 #= require "_components/_breathe"
+#= require "_components/_flicker"
 #= require "_components/_balloon"
 #= require "_components/_cloud"
 #= require "_components/_recorder"
