@@ -7,8 +7,8 @@ NKO.Game.Scenes.push (C) ->
     # using a http source makes the browser not reload
     # TODO move to S3
     C.load [
-      "http://s3.amazonaws.com/samexhibit/production/files/12229/5aff477064c1e358dc95746f020c6be49060c2ed.png?1384029379",
-      "https://i.cloudup.com/rLu9JKmVWf-3000x3000.png"
+      "http://ffframe.s3.amazonaws.com/balloons.png",
+      "http://ffframe.s3.amazonaws.com/balloon-faces.png"
       "img/clouds-white.png"
       "img/clouds-blue.png"
       "img/stars.png"
@@ -28,7 +28,7 @@ NKO.Game.Scenes.push (C) ->
         cloud: ['/mp3/cloud.mp3']
       });
 
-      C.sprite 248.24242424242424, 292, "http://s3.amazonaws.com/samexhibit/production/files/12231/a6a14b43ebc867fa11b3b8d817ddbff992b6f935.png?1384030033",
+      C.sprite 248.24242424242424, 292, "http://ffframe.s3.amazonaws.com/balloons.png",
         balloon_0:  [0, 0]
         balloon_1:  [1, 0]
         balloon_2:  [2, 0]
@@ -63,7 +63,7 @@ NKO.Game.Scenes.push (C) ->
         balloon_31: [31, 0]
         balloon_32: [32, 0]
 
-      C.sprite 225, 76, "https://i.cloudup.com/rLu9JKmVWf-3000x3000.png",
+      C.sprite 225, 76, "http://ffframe.s3.amazonaws.com/balloon-faces.png",
         face_hit:     [0,0]
         face_normal:  [1,0]
         face_inhale:  [2,0]
