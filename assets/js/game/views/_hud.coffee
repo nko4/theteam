@@ -36,6 +36,8 @@ class NKO.Views.Hud extends Backbone.View
     @onRender()
     this
 
+  getScore: -> @lastScore
+
   _toHHMMSS: (int) ->
     num     = parseInt(int, 10)
     hours   = Math.floor(num/3600)
@@ -51,4 +53,5 @@ class NKO.Views.Hud extends Backbone.View
     Math.max 10, (num+450) * (520/6450) + 10
 
   _convertToEarthMiles: (num) ->
-    Math.max 0, Math.round( (num+450) * (225000/6450) )
+    @lastScore = Math.max 0, Math.round( (num+450) * (225000/6450) )
+    @lastScore
