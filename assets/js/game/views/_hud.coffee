@@ -25,7 +25,8 @@ class NKO.Views.Hud extends Backbone.View
   startTimer: ->
     start = new Date
     setInterval =>
-      @$('.time').text @_toHHMMSS(Math.round((new Date - start) / 1000))
+      @lastTimeNumber = Math.round((new Date - start) / 1000)
+      @$('.time').text @_toHHMMSS(@lastTimeNumber)
     , 1000
 
   onRender: ->
@@ -39,6 +40,8 @@ class NKO.Views.Hud extends Backbone.View
   getScore: -> @lastScore
 
   getTime: -> @lastTime
+
+  getSpeedTime: -> @lastTimeNumber
 
   _toHHMMSS: (int) ->
     num     = parseInt(int, 10)

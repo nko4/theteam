@@ -1,11 +1,10 @@
 require ['crafty'], (C) ->
 
   C.scene "win", ->
-    # if high score
-    # templates.game_high_score
+    template = if NKO.isHighScore(NKO.hud.getSpeedTime()) then templates.game_high_score else  templates.game_win
 
     $('.end-game-display-area').addClass('ended').html(
-      templates.game_win(
+      template(
         time: NKO.hud.getTime()
       )
     )
