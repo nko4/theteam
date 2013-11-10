@@ -23,4 +23,7 @@
 #= require "_components/_replayer"
 
 require ['crafty'], (C) ->
-  C.scene "loading"
+  if C._scenes['loading']
+    C.scene "loading"
+  else
+    setTimeout (-> C.scene "loading"), 100
