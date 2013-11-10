@@ -21,11 +21,11 @@ NKO.Game.Scenes.push (C) ->
     ], ->
 
       C.audio.add({
-        overture: ['/mp3/zoom.mp3']
-        inhale: ['/mp3/inhale.mp3']
-        exhale: ['/mp3/exhale.mp3']
-        bounce: ['/mp3/bounce.mp3']
-        cloud: ['/mp3/cloud.mp3']
+        overture: ['mp3/zoom.mp3']
+        inhale:   ['mp3/inhale.mp3']
+        exhale:   ['mp3/exhale.mp3']
+        bounce:   ['mp3/bounce.mp3']
+        cloud:    ['mp3/cloud.mp3']
       });
 
       C.sprite 248.24242424242424, 292, "http://ffframe.s3.amazonaws.com/balloons.png",
