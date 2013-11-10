@@ -28,13 +28,25 @@ html
   border-left:    solid 5px #144b5a
   border-right:   solid 5px #144b5a
 
+.back-panel 
+  top: 0
+  left: 50%
+  size: 262px 100%
+  padding: 0 10px
+  position: fixed
+  background: #fffceb
+  border-left: solid 5px #144b5a
+  border-right: solid 5px #144b5a
+  z-index: -1
+  margin-left: -131px
+
+
 .download, .like
   display: block
   font-size: 26px
   text-decoration: none
-  font-weight: 700
   font-style: italic
-  background: #f3c447
+  background: #F4C538
   width: 90%
   margin: 0 auto
   border: solid 5px #8B784B
@@ -44,34 +56,63 @@ html
   margin-top: 40px
   padding: 9px 0
   box-sizing: border-box
+  &:hover  
+    background: #F8DC88 
+  &:active
+    border-bottom: solid 5px #8B784B
+    margin-top: 44px
+.download
+  font-weight: 700
 
 .like
   background: #ffffff
   border-color: #8A8A8A
   font-weight: 0
-  font-style: normal
+  font-style: italic
   font-size: 18px
+  &:hover  
+    background: #ffffff
+  &:active
+    border-bottom: solid 5px #8A8A8A
+    margin-top: 39px
   img
     margin-right: 12px
     position: relative
     top: 2px
 
+.play
+  color: #727273
+  font-size: 18px
+  font-weight: 700
+  font-style: italic
+  margin-top: 16px
+  display: inline-block
+  &:hover 
+    color: #231F20
+
 .how-to
-  margin-top: 85px
+  margin-top: 75px
 
 .description
   line-height:    24px
   margin-bottom:  25px
 
 .download
-  margin-top: 40px
+  margin-top: 36px
 
 .like
   margin-top: 35px
   cursor: default
 
 .share-content
-  margin-top: 40px
+  position: absolute
+  bottom: 30px
+  width: 100%
+  @media screen and (max-height: 640px)
+    position: relative
+    margin-top: 30px
+    margin-left: 9px
+    padding-bottom: 30px
 
 h2
   font-style: italic;
@@ -83,7 +124,7 @@ h1 span
   display:        block
   font-size:      30px
   margin-top:     -5px;
-  margin-bottom:  10px
+  margin-bottom:  3px
 
 h1, h3
   color:        #eb483c
@@ -98,5 +139,8 @@ h3
 iframe
   width: 32%;
   position: relative;
-  top: -40px;
+  top: -50px;
   opacity: 0;
+
+.second-row
+  top: -52px;
