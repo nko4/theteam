@@ -26,7 +26,8 @@ class NKO.Views.Hud extends Backbone.View
     start = new Date
     setInterval =>
       @lastTimeNumber = Math.round((new Date - start) / 1000)
-      @$('.time').text @_toHHMMSS(@lastTimeNumber)
+      @lastTime = NKO.toHHMMSS(@lastTimeNumber)
+      @$('.time').text @lastTime
     , 1000
 
   onRender: ->
@@ -38,22 +39,8 @@ class NKO.Views.Hud extends Backbone.View
     this
 
   getScore: -> @lastScore
-
   getTime: -> @lastTime
-
   getSpeedTime: -> @lastTimeNumber
-
-  _toHHMMSS: (int) ->
-    num     = parseInt(int, 10)
-    hours   = Math.floor(num/3600)
-    minutes = Math.floor((num - (hours*3600)) / 60)
-    seconds = num - (hours*3600) - (minutes*60)
-
-    if (minutes < 10) then minutes = "0#{minutes}"
-    if (seconds < 10) then seconds = "0#{seconds}"
-
-    @lastTime = "#{minutes}:#{seconds}"
-    @lastTime
 
   _convertToSidebar: (num) ->
     Math.max 10, (num+450) * (520/6450) + 10

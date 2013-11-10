@@ -1,8 +1,11 @@
 NKO.Game.Scenes.push (C) ->
   C.scene "end", ->
+
     $('.end-game-display-area').addClass('ended').html(
       templates.game_over(
         miles: NKO.hud.getScore()
+        highScores: _(NKO.highScores).values().first(8).map( (s) -> NKO.toHHMMSS(s.score) ).valueOf()
+        names: _(NKO.highScores).values().first(8).map( (s) -> s.name ).valueOf()
       )
     )
 
