@@ -15,29 +15,33 @@ require ['crafty'], (C) ->
     elementsShown: 0
     position: 0
 
-    _pick: (from) ->
-      from[Math.floor(Math.random() * from.length)]
+    _pick: (from, rand) ->
+      from[Math.floor(rand * from.length)]
 
     spawnElement: (num) ->
       @elementsShown++
 
-      if num < 33
-        @_addCloud()
-      else if num < 67
-        @_addCloud('blue')
+      levelThirds = NKO.numberOfClouds/3
+      rand = NKO.seededNumbers[num]
+
+      if num < levelThirds
+        @_addCloud(rand)
+      else if num < levelThirds*2
+        @_addCloud(rand, 'blue')
       else
-        @_addStar()
+        @_addStar(rand)
 
 
-    _addCloud: (type='white') ->
-      style = @_pick(@elements[type].styles)
+    _addCloud: (rand, type='white') ->
+      style = @_pick(@elements[type].styles, rand)
+      xPos = (rand * (C.viewport.width + 183)) - 91.5
       cloud = C.e("Cloud, "+style)
       cloud.attr
         w: 183 # need to reset w/h since the Sprite component is loaded after the 2D component
         h: 126
-        x: (Math.random() * (C.viewport.width + 183)) - 91.5
+        x: xPos
         y: @position
-        taret: "Balloon"
+        target: "Balloon"
 
       switch style
         when 'b1', 'w1'
@@ -55,17 +59,18 @@ require ['crafty'], (C) ->
         when 'w8', 'b8'
           cloud.collision([124.5, 0], [189, 84.65], [174.5, 111.65], [83, 140], [0, 115], [2.5, 35], [55, 12])
 
-      @position -= @_pick(@elements[type].spacing) #/ @elementsShown
+      @position -= @_pick(@elements[type].spacing, rand)
 
-    _addStar: ->
-      style = @_pick(@elements.star.styles)
+    _addStar: (rand) ->
+      style = @_pick(@elements.star.styles, rand)
+      xPos = (rand * (C.viewport.width + 74)) - 37
       star = C.e("Cloud, "+style)
       star.attr
         w: 74 # need to reset w/h since the Sprite component is loaded after the 2D component
         h: 74
-        x: (Math.random() * (C.viewport.width + 74)) - 37
+        x: xPos
         y: @position
-        taret: "Balloon"
+        target: "Balloon"
 
       switch style
         when 's1'
@@ -77,4 +82,4 @@ require ['crafty'], (C) ->
         when 's4'
           star.collision([42.894,15],[57.775,33.4],[44.617999999999995,53.873],[21.217,47.669],[20,23.026])
 
-      @position -= @_pick(@elements.star.spacing) #/ @elementsShown
+      @position -= @_pick(@elements.star.spacing, rand)
