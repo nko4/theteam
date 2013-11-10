@@ -103,6 +103,12 @@ NKO.Game.Scenes.push (C) ->
             unless error
               NKO.gameState        = gameState
               NKO.gameState.replay = true
-            C.scene 'start'
+            if NKO.gameState.replay
+              C.scene 'main'
+            else
+              C.scene 'start'
       else
-        C.scene "start"
+        if NKO.gameState.replay
+          C.scene 'main'
+        else
+          C.scene 'start'

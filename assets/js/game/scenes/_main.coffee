@@ -14,8 +14,9 @@ NKO.Game.Scenes.push (C) ->
     balloon = C.e("Balloon")
     balloon.attr x: _center(balloon), y: (C.viewport.height - balloon.h - padding)
 
-    if NKO.gameState
-        balloon._replay(NKO.gameState)
+    if NKO.gameState.replay
+      $('html').addClass 'replay'
+      balloon._replay(NKO.gameState)
 
     # Uncomment to see a replay in action
     # balloon._replay

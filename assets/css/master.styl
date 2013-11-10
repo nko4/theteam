@@ -1,6 +1,9 @@
 global-reset()
 @import "_pre_game"
 
+html.replay
+  transform: scale(0.25)
+
 .share-content
   display: none
 
@@ -12,6 +15,10 @@ html
 
 .Actor.Moon
   background-size: cover !important
+
+.retry-game-over
+  width: 800px;
+  margin: 0 auto;
 
 .game
   size 800 600
