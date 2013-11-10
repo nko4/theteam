@@ -12,6 +12,7 @@ NKO.Game.Scenes.push (C) ->
       "img/clouds-white.png"
       "img/clouds-blue.png"
       "img/stars.png"
+      "img/moon-header.png"
     ], ->
       C.sprite 248.24242424242424, 292, "http://s3.amazonaws.com/samexhibit/production/files/12231/a6a14b43ebc867fa11b3b8d817ddbff992b6f935.png?1384030033",
         balloon_0:  [0, 0]

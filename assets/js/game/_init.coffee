@@ -21,6 +21,9 @@ require ['crafty'], (C) ->
     Math.seedrandom seed
     NKO.seededNumbers = _.times NKO.numberOfClouds, Math.random
 
+    # Draw the moon
+    C.e("Moon").attr(w: 486, h: 95)
+
     # Draw our game board clouds here
     spawner = C.e("Spawner")
     spawner.spawnElement(num) for num in [1..NKO.numberOfClouds]

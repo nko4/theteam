@@ -7827,6 +7827,7 @@ Crafty.c("Image", {
       } else if (e.type === "DOM") {
         if (this.__image)
           e.style.background = "url(" + this.__image + ") " + this._repeat;
+          e.style['background-size'] = "cover";
       }
     };
 
