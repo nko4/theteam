@@ -1,6 +1,11 @@
 global-reset()
+@import "_pre_game"
 
-@import "_game_over"
+.end-game-display-area
+  @import "_game_over"
+
+html
+  font-family 'Asap', 'helvetica', 'sans-serif'
 
 #hud
   z-index 100
@@ -8,7 +13,6 @@ global-reset()
   position absolute
   top 0
   left 0
-  font-family 'Asap', 'helvetica', 'sans-serif'
   color #fff
   font-weight 700
   font-style italic

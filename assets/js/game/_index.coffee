@@ -1,13 +1,14 @@
 #= require "crafty-custom-follow"
+#= require "scenes/_loading"
 #= require "_init"
 #= require "_database"
 #= require "_scores"
 #= require "../vendor/chroma"
 #= require "models/_player"
 #= require "views/_hud"
+#= require "scenes/_start"
 #= require "scenes/_end"
 #= require "scenes/_win"
-#= require "scenes/_loading"
 #= require "scenes/_main"
 #= require "_components/_actor"
 #= require "_components/_spawner"
@@ -22,4 +23,7 @@
 #= require "_components/_replayer"
 
 require ['crafty'], (C) ->
-  C.scene "loading"
+  if C._scenes['loading']
+    C.scene "loading"
+  else
+    setTimeout (-> C.scene "loading"), 100
