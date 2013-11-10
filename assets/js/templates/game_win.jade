@@ -1,0 +1,17 @@
+.retry-game-over
+  .primary-panel.win
+    .header-copy
+      h1 Hooray!
+      h2 You and Zoom reached the moon!
+    .how-to
+      h3 Your Time:
+      p.description #{time}
+
+    p.button-copy Want to do it again?
+    a.retry(href="/") Let's go!
+
+    .share-content
+      p.share-copy Care to share?
+      span(class='st_facebook_hcount', displayText='Facebook', st_title="I Beat Zoom the Balloon in #{time} #zoomtheballoon", st_url="http://zoomtheballoon.com/")
+      span(class='st_twitter_hcount', displayText='Tweet', st_title="I Beat Zoom the Balloon in #{time} #zoomtheballoon", st_url="http://zoomtheballoon.com/")
+    img.moon(src="img/moon-flag-footer.png")

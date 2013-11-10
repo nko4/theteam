@@ -1,12 +1,11 @@
 require ['crafty'], (C) ->
 
-  C.scene "end", ->
+  C.scene "win", ->
     $('.end-game-display-area').addClass('ended').html(
-      templates.game_over(
-        miles: NKO.hud.getScore()
+      templates.game_win(
+        time: NKO.hud.getTime()
       )
     )
 
     $('#hud').hide()
-
     stButtons.locateElements()

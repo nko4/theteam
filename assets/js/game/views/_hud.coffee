@@ -38,6 +38,8 @@ class NKO.Views.Hud extends Backbone.View
 
   getScore: -> @lastScore
 
+  getTime: -> @lastTime
+
   _toHHMMSS: (int) ->
     num     = parseInt(int, 10)
     hours   = Math.floor(num/3600)
@@ -47,7 +49,8 @@ class NKO.Views.Hud extends Backbone.View
     if (minutes < 10) then minutes = "0#{minutes}"
     if (seconds < 10) then seconds = "0#{seconds}"
 
-    "#{minutes}:#{seconds}"
+    @lastTime = "#{minutes}:#{seconds}"
+    @lastTime
 
   _convertToSidebar: (num) ->
     Math.max 10, (num+450) * (520/6450) + 10

@@ -5,6 +5,7 @@
 #= require "models/_player"
 #= require "views/_hud"
 #= require "scenes/_end"
+#= require "scenes/_win"
 #= require "scenes/_loading"
 #= require "scenes/_main"
 #= require "_components/_actor"
