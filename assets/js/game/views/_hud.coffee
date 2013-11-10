@@ -48,7 +48,7 @@ class NKO.Views.Hud extends Backbone.View
     "#{minutes}:#{seconds}"
 
   _convertToSidebar: (num) ->
-    (num+450) * (520/6450) + 10
+    Math.max 10, (num+450) * (520/6450) + 10
 
   _convertToEarthMiles: (num) ->
     Math.max 0, Math.round( (num+450) * (225000/6450) )
